@@ -1,16 +1,14 @@
-<mat-toolbar>
-  <mat-toolbar-row class="toolbar">
-    <div class="name">
-      <img width="40" alt="Car Logo" src="../assets/images/car-logo.png" />
-      <span>Welcome to Perfect Car Match</span>
-    </div>
+<mat-toolbar class="toolbar">
+  <div class="name">
+    <img width="40" alt="Car Logo" src="../assets/images/car-logo.png" />
+    <span>Welcome to Perfect Car Match</span>
+  </div>
 
-    <mat-icon [matMenuTriggerFor]="menu" class="pointer">more_vert</mat-icon>
-    <mat-menu #menu="matMenu">
-      <div (click)="aboutUsClicked()" class="menu-option">About Us</div>
-      <div (click)="adminAreaClicked()" class="menu-option">
-        {{ isAdmin ? "Admin Area" : "Logout" }}
-      </div>
-    </mat-menu>
-  </mat-toolbar-row>
+  <mat-icon [matMenuTriggerFor]="menu" class="pointer">more_vert</mat-icon>
+  <mat-menu #menu="matMenu">
+    <div (click)="aboutUsClicked()" class="menu-option">About Us</div>
+    <div (click)="adminAreaClicked()" class="menu-option">
+      {{ !isAdmin ? "Admin Area" : "Logout" }}
+    </div>
+  </mat-menu>
 </mat-toolbar>
