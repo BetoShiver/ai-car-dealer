@@ -22,32 +22,27 @@
         margin: 0 16px;
     }
 
-    .no-btn {
-        background-color: transparent;
-        border: none;
-        color: white;
-        font-weight: 600;
-        font-size: large;
+    .pointer {
         cursor: pointer;
     }
 }
 
+.menu-option {
+    padding: 0 8px;
+    color: #1976d2;
+    cursor: pointer;
+}
+
 @media screen and (max-width: 500px) {
     .toolbar {
-        flex-direction: column;
-        height: 100px;
-        padding: 16px;
-        justify-content: space-between;
-
+        padding: 0;
         .name {
-            margin-bottom: 16px;
             align-self: center;
             font-size: medium;
         }
 
-        .no-btn {
-            align-self: flex-end;
-            font-size: 14px;
+        img {
+            margin: 0 8px;
         }
     }
 }

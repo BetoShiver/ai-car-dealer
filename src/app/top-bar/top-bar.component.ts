@@ -6,19 +6,20 @@ import { Component, OnInit } from '@angular/core'
   styleUrls: ['./top-bar.component.scss'],
 })
 export class TopBarComponent implements OnInit {
+  public isAdmin = false
+
   constructor() {}
 
-  ngOnInit(): void { }
-  
-  isInputSafeLevel1(input: string): boolean {
-    const regex = /<script.*?>.*?<\/script>|<.*?>/g
-    return !regex.test(input)
-  }
-  
-  isInputSafeLevel2(input: string): boolean {
-    const regex = /<html.*?>.*?<\/html>|<.*?>/g
-    return !regex.test(input)
-  }
-  
+  ngOnInit(): void {}
 
+  public aboutUsClicked(): void {}
+
+  public adminAreaClicked(): void {
+    this.isAdmin ? this.logout() : this.openAdminSite()
+  }
+
+  private openAdminSite(): void {}
+  private logout(): void {
+    this.isAdmin = false
+  }
 }

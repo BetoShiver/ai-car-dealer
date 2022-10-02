@@ -5,6 +5,12 @@
       <span>Welcome to Perfect Car Match</span>
     </div>
 
-    <button class="no-btn">options</button>
+    <mat-icon [matMenuTriggerFor]="menu" class="pointer">more_vert</mat-icon>
+    <mat-menu #menu="matMenu">
+      <div (click)="aboutUsClicked()" class="menu-option">About Us</div>
+      <div (click)="adminAreaClicked()" class="menu-option">
+        {{ isAdmin ? "Admin Area" : "Logout" }}
+      </div>
+    </mat-menu>
   </mat-toolbar-row>
 </mat-toolbar>
