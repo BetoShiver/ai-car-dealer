@@ -1,6 +1,13 @@
 <div class="wrapper">
   <mat-card class="selector">
-    <div>All Visits</div>
-    <div>Insights</div>
+    <div (click)="view = 'table'" [ngClass]="{ selected: view == 'table' }">
+      All Visits
+    </div>
+    <div
+      (click)="view = 'insights'"
+      [ngClass]="{ selected: view == 'insights' }"
+    >
+      Insights
+    </div>
   </mat-card>
 </div>

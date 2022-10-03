@@ -1,15 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
 
 @Component({
   selector: 'app-admin-site',
   templateUrl: './admin-site.component.html',
-  styleUrls: ['./admin-site.component.scss']
+  styleUrls: ['./admin-site.component.scss'],
 })
 export class AdminSiteComponent implements OnInit {
+  view = 'table'
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
