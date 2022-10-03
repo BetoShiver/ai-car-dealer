@@ -1,1 +1,100 @@
-<p>client-form works!</p>
+<div class="client-main">
+  <mat-card class="form-card">
+    <mat-card-header>
+      <mat-card-title>
+        <h1>Car selection Form</h1>
+      </mat-card-title>
+      <mat-card-subtitle>
+        <h2>Fill out these details and we'll find your perfect car.</h2>
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <h3>Personal details</h3>
+      <div class="row">
+        <mat-form-field appearance="outline">
+          <mat-label>Full Name</mat-label>
+          <input matInput />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" />
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field appearance="outline">
+          <mat-label>Date of Birth</mat-label>
+          <input matInput [matDatepicker]="picker" placeholder="MM/DD/YYYY" />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Hobbies</mat-label>
+          <mat-select multiple>
+            <mat-option *ngFor="let hobby of hobbies" [value]="hobby">{{
+              hobby
+            }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="row gender">
+        <mat-radio-group aria-label="Select an option">
+          <mat-radio-button value="male">Male</mat-radio-button>
+          <mat-radio-button class="ml" value="female">Female</mat-radio-button>
+        </mat-radio-group>
+      </div>
+
+      <h3>Location</h3>
+      <div class="row">
+        <mat-form-field appearance="outline">
+          <mat-label>Address</mat-label>
+          <input matInput />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>City</mat-label>
+          <input matInput type="email" />
+        </mat-form-field>
+      </div>
+
+      <div class="row">
+        <mat-form-field appearance="outline">
+          <mat-label>Country</mat-label>
+          <input matInput type="email" />
+        </mat-form-field>
+      </div>
+
+      <h3>Car details</h3>
+      <div class="row">
+        <mat-form-field appearance="outline">
+          <mat-label>Motor Type</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let type of motortypes" [value]="type">{{
+              type
+            }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Seats</mat-label>
+          <input matInput type="number" min="2" max="7" />
+          <mat-hint>Must be between 2 and 7</mat-hint>
+        </mat-form-field>
+      </div>
+
+      <div class="row">
+        <mat-form-field appearance="outline">
+          <mat-label>Color</mat-label>
+          <input matInput type="color" min="2" max="7" />
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+    <mat-card-actions class="center">
+      <button mat-raised-button color="primary">Done</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

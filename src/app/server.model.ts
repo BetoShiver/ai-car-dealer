@@ -6,10 +6,11 @@ export interface Database {
 
 export interface Form {
   fullName: string
-  gender: string
   email: string
-  location: location
+  gender: string
+  birthday: string
   hobbies: string[]
+  location: location
   color: string
   seats: number
   motorType: string

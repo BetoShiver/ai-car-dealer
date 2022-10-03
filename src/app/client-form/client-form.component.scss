@@ -1,0 +1,44 @@
+.client-main {
+    padding: 25px;
+    display: flex;
+    justify-content: center;
+
+    .form-card {
+        width: 90%;
+        max-width: 500px;
+        min-width: 330px;
+    }
+}
+
+.mat-form-field {
+    min-width: 240px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.ml {
+    margin-left: 10px;
+}
+
+.gender {
+    margin: 20px 0 30px;
+}
+
+.center {
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 620px) {
+    .form-card {
+        width: 100%;
+        min-width: none;
+    }
+
+    .row {
+        flex-direction: column;
+    }
+}
