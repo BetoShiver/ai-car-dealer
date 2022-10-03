@@ -8,10 +8,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { MatImportsModule } from './mat-imports/mat-imports.module';
 import { FooterComponent } from './footer/footer.component';
 import { AdminSiteComponent } from './admin-site/admin-site.component';
-import { ClientFormComponent } from './client-form/client-form.component'
+import { ClientFormComponent } from './client-form/client-form.component';
+import { AboutUsDialogComponent } from './about-us-dialog/about-us-dialog.component';
+import { LoginComponent } from './login/login.component'
 
 @NgModule({
-  declarations: [AppComponent, TopBarComponent, FooterComponent, AdminSiteComponent, ClientFormComponent],
+  declarations: [AppComponent, TopBarComponent, FooterComponent, AdminSiteComponent, ClientFormComponent, AboutUsDialogComponent, LoginComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
