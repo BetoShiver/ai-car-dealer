@@ -5,8 +5,8 @@ import {
   IForm,
   ILocation,
   IUserInput,
-} from '../shared/server.model'
-import { ServerService } from '../shared/server.service'
+} from '../shared/server/server.model'
+import { ServerService } from '../shared/server/server.service'
 
 @Component({
   selector: 'app-client-form',
@@ -62,10 +62,12 @@ export class ClientFormComponent implements OnInit {
   public onSubmit() {
     let inputs: IUserInput = this.profileForm.value
     const formToSubmit = new FormToSubmit(inputs)
-    console.log('formToSubmit: ', formToSubmit)
-    window.alert(
-      'Yor details were received successfully.you will receive an email with your Perfect Car Match Shortly.',
-    )
     this.formCompleted = true
+    console.log('formToSubmit: ', formToSubmit)
+    setTimeout(() => {
+      window.alert(
+        'Yor details were received successfully.you will receive an email with your Perfect Car Match Shortly.',
+      )
+    }, 100)
   }
 }

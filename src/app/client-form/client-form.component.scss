@@ -3,7 +3,7 @@
     display: flex;
     justify-content: center;
 
-    .form-card {
+    .mat-card {
         width: 90%;
         max-width: 500px;
         min-width: 330px;
@@ -34,7 +34,7 @@
 }
 
 @media screen and (max-width: 620px) {
-    .form-card {
+    .mat-card {
         width: 100%;
         min-width: none;
     }

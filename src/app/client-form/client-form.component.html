@@ -1,5 +1,5 @@
 <div class="client-main">
-  <mat-card class="form-card" *ngIf="!formCompleted">
+  <mat-card *ngIf="!formCompleted">
     <mat-card-header>
       <mat-card-title>
         <h1>Car selection Form</h1>
@@ -122,8 +122,7 @@
       </button>
     </mat-card-actions>
   </mat-card>
+  <mat-card *ngIf="formCompleted">
+    Thank you for your submission. We will contact you shortly.
+  </mat-card>
 </div>
-
-<mat-card class="form-card" *ngIf="formCompleted">
-  Thank you for your submission. We will contact you shortly.
-</mat-card>
