@@ -1,10 +1,12 @@
-import {
-  Component,
-  OnInit,
-  ɵisDefaultChangeDetectionStrategy,
-} from '@angular/core'
+import { Component, OnInit } from '@angular/core'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
-import { FormToSubmit, IForm, ILocation, IUserInput } from '../server.model'
+import {
+  FormToSubmit,
+  IForm,
+  ILocation,
+  IUserInput,
+} from '../shared/server.model'
+import { ServerService } from '../shared/server.service'
 
 @Component({
   selector: 'app-client-form',
@@ -34,8 +36,12 @@ export class ClientFormComponent implements OnInit {
   public motortypes = ['Electric', 'Fuel', 'Hybrid']
 
   public profileForm!: FormGroup
+  public formCompleted = false
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private server: ServerService,
+  ) {}
 
   ngOnInit(): void {
     this.profileForm = this.formBuilder.group({
@@ -57,5 +63,9 @@ export class ClientFormComponent implements OnInit {
     let inputs: IUserInput = this.profileForm.value
     const formToSubmit = new FormToSubmit(inputs)
     console.log('formToSubmit: ', formToSubmit)
+    window.alert(
+      'Yor details were received successfully.you will receive an email with your Perfect Car Match Shortly.',
+    )
+    this.formCompleted = true
   }
 }
