@@ -1,5 +1,10 @@
-import { Component, OnInit } from '@angular/core'
+import {
+  Component,
+  OnInit,
+  ɵisDefaultChangeDetectionStrategy,
+} from '@angular/core'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { FormToSubmit, IForm, ILocation, IUserInput } from '../server.model'
 
 @Component({
   selector: 'app-client-form',
@@ -37,15 +42,7 @@ export class ClientFormComponent implements OnInit {
       fullName: ['', [Validators.required]],
       gender: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
-      birthday: [
-        '',
-        [
-          Validators.required,
-          Validators.pattern(
-            '^(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)dd$',
-          ),
-        ],
-      ],
+      birthday: ['', [Validators.required]],
       address: ['', [Validators.required]],
       city: ['', [Validators.required]],
       country: ['', [Validators.required]],
@@ -54,5 +51,11 @@ export class ClientFormComponent implements OnInit {
       seats: [4, [Validators.required, Validators.max(7), Validators.min(2)]],
       motorType: ['', [Validators.required]],
     })
+  }
+
+  public onSubmit() {
+    let inputs: IUserInput = this.profileForm.value
+    const formToSubmit = new FormToSubmit(inputs)
+    console.log('formToSubmit: ', formToSubmit)
   }
 }

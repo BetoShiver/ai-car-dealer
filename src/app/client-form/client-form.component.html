@@ -113,6 +113,7 @@
     </mat-card-content>
     <mat-card-actions class="center">
       <button
+        (click)="onSubmit()"
         mat-raised-button
         color="primary"
         [disabled]="profileForm.invalid"
