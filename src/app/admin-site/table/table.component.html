@@ -1,5 +1,4 @@
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-  <!-- Position Column -->
   <ng-container *ngFor="let col of displayedColumns" [matColumnDef]="col">
     <th mat-header-cell *matHeaderCellDef>
       {{
@@ -10,22 +9,39 @@
           : (col | titlecase)
       }}
     </th>
-    <td
-      mat-cell
-      *matCellDef="let element"
-      [ngStyle]="{ 'background-color': col == 'color' ? element.color : '' }"
-    >
+    <td mat-cell *matCellDef="let element">
       {{
         col == "location"
-          ? element.locationString
+          ? element.location.country
           : col == "color"
           ? ""
           : col == "birthday"
           ? (element[col] | date: "mediumDate")
           : col == "hobbies"
-          ? (element.hobbiesString | titlecase)
+          ? element.hobbies.length + " Hobbies"
           : element[col]
       }}
+      <div
+        class="color"
+        *ngIf="col == 'color'"
+        [ngStyle]="{ 'background-color': element.color }"
+      >
+        .
+      </div>
+      <mat-icon
+        matTooltipClass="tooltip"
+        [matTooltip]="element.locationString"
+        class="info"
+        *ngIf="col == 'location'"
+        >info</mat-icon
+      >
+      <mat-icon
+        matTooltipClass="tooltip"
+        [matTooltip]="element.hobbiesString"
+        class="info"
+        *ngIf="col == 'hobbies'"
+        >info</mat-icon
+      >
     </td>
   </ng-container>
 

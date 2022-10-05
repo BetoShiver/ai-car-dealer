@@ -1,10 +1,25 @@
 table {
     width: 100%;
-    max-width: 800px;
+    max-width: 1100px;
     border-radius: 16px;
 
     th {
         min-width: 80px;
         text-align: center;
     }
+}
+
+.info {
+    font-size: 0.8rem;
+}
+
+::ng-deep .tooltip {
+    font-size: medium;
+}
+
+.color {
+    height: 90%;
+    width: 90%;
+    color: transparent;
+    border-radius: 5px;
 }
