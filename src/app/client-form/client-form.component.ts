@@ -1,11 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
-import {
-  FormToSubmit,
-  IForm,
-  ILocation,
-  IUserInput,
-} from '../shared/server/server.model'
+import { Form, ILocation, IUserInput } from '../shared/server/server.model'
 import { ServerService } from '../shared/server/server.service'
 
 @Component({
@@ -61,7 +56,7 @@ export class ClientFormComponent implements OnInit {
 
   public onSubmit() {
     let inputs: IUserInput = this.profileForm.value
-    const formToSubmit = new FormToSubmit(inputs)
+    const formToSubmit = new Form(inputs)
     this.formCompleted = true
     this.server.saveForm(formToSubmit)
     setTimeout(() => {

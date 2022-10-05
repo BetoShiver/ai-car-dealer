@@ -1,21 +1,7 @@
 export interface IDatabase {
   totalVisits: number
-  formsSubmitted: IForm[]
+  formsSubmitted: Form[]
   isAdmin: boolean
-}
-
-export interface IForm {
-  fullName: string
-  email: string
-  gender: string
-  birthday: string
-  hobbies: string[]
-  hobbiesString?: string
-  location: ILocation
-  locationString?: string
-  color: string
-  seats: number
-  motorType: string
 }
 
 export interface ILocation {
@@ -38,7 +24,7 @@ export interface IUserInput {
   country: string
 }
 
-export class FormToSubmit {
+export class Form {
   public fullName
   public email
   public gender
@@ -50,6 +36,7 @@ export class FormToSubmit {
   public motorType
   public hobbiesString
   public locationString
+  public processed
 
   constructor(data: IUserInput) {
     this.fullName = this.sanitize(data.fullName)
@@ -67,6 +54,11 @@ export class FormToSubmit {
     this.seats = data.seats
     this.motorType = this.sanitize(data.motorType)
     this.locationString = `${this.location.address}, ${this.location.city}, ${this.location.country}`
+    this.processed = this.randomBoolean()
+  }
+
+  private randomBoolean() {
+    return Math.random() >= 0.5
   }
 
   private sanitize(string: string) {

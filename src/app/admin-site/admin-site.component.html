@@ -11,7 +11,9 @@
     </div>
   </mat-card>
 
-  <ng-container *ngIf="view == 'table'">
+  <ng-container *ngIf="view == 'table'; else Insights">
     <app-table></app-table>
   </ng-container>
+
+  <ng-template #Insights> TEST </ng-template>
 </div>

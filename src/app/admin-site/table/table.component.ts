@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { IForm } from 'src/app/shared/server/server.model'
+import { Form } from 'src/app/shared/server/server.model'
 import { ServerService } from 'src/app/shared/server/server.service'
 import { MatTableDataSource } from '@angular/material/table'
 
@@ -9,7 +9,7 @@ import { MatTableDataSource } from '@angular/material/table'
   styleUrls: ['./table.component.scss'],
 })
 export class TableComponent implements OnInit {
-  dataSource!: MatTableDataSource<IForm>
+  dataSource!: MatTableDataSource<Form>
 
   formsSubscription: any
 
@@ -29,7 +29,6 @@ export class TableComponent implements OnInit {
 
   ngOnInit() {
     this.formsSubscription = this.server.forms$.subscribe((forms) => {
-      console.log('forms: ', forms)
       this.dataSource = new MatTableDataSource(forms)
     })
   }

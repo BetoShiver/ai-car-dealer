@@ -1,18 +1,18 @@
 import { Injectable } from '@angular/core'
 import { BehaviorSubject } from 'rxjs'
-import { IForm } from './server.model'
+import { Form } from './server.model'
 import { Router } from '@angular/router'
 @Injectable({
   providedIn: 'root',
 })
 export class ServerService {
   public totalVisits: number = 0
-  public forms: IForm[] = []
+  public forms: Form[] = []
 
   private totalVisitsSource = new BehaviorSubject<number>(0)
   public totalVisits$ = this.totalVisitsSource.asObservable()
 
-  private formsSource = new BehaviorSubject<IForm[]>([])
+  private formsSource = new BehaviorSubject<Form[]>([])
   public forms$ = this.formsSource.asObservable()
 
   private roleSource = new BehaviorSubject<boolean>(false)
@@ -22,7 +22,6 @@ export class ServerService {
     this.fetchVisits()
     this.fetchForms()
     this.fetchRole()
-    console.log('this.totalVisits: ', this.totalVisits)
   }
 
   private fetchRole(): void {
@@ -55,14 +54,12 @@ export class ServerService {
   }
 
   public saveForm(form: any): void {
-    console.log('this.forms: ', this.forms)
-    console.log('form: ', form)
     this.forms.push(form)
     localStorage.setItem('forms', JSON.stringify(this.forms))
     this.formsSource.next(this.forms)
   }
 
-  public getForms(): IForm[] {
+  public getForms(): Form[] {
     return this.forms
   }
 
