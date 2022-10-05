@@ -37,5 +37,7 @@ export class CommonHobbiesComponent implements OnInit, OnDestroy {
     })
   }
 
-  ngOnDestroy() {}
+  ngOnDestroy() {
+    this.subscription.unsubscribe()
+  }
 }
