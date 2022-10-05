@@ -1,5 +1,6 @@
 export interface IDatabase {
   totalVisits: number
+  adminVisits: number
   formsSubmitted: IForm[]
   isAdmin: boolean
 }

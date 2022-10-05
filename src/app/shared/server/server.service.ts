@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core'
+import { BehaviorSubject } from 'rxjs'
 import { IForm } from './server.model'
-
+import { Router } from '@angular/router'
 @Injectable({
   providedIn: 'root',
 })
@@ -8,9 +9,45 @@ export class ServerService {
   public totalVisits: number = 0
   public forms: IForm[] = []
 
-  constructor() {
+  private totalVisitsSource = new BehaviorSubject<number>(0)
+  public totalVisits$ = this.totalVisitsSource.asObservable()
+
+  private formsSource = new BehaviorSubject<IForm[]>([])
+  public forms$ = this.formsSource.asObservable()
+
+  private roleSource = new BehaviorSubject<boolean>(false)
+  public isAdmin$ = this.roleSource.asObservable()
+
+  constructor(private router: Router) {
     this.fetchVisits()
     this.fetchForms()
+    this.fetchRole()
+    console.log('this.totalVisits: ', this.totalVisits)
+  }
+
+  private fetchRole(): void {
+    const data = localStorage.getItem('isAdmin')
+    if (data) {
+      let isAdmin = JSON.parse(data)
+      this.roleSource.next(isAdmin)
+      if (isAdmin) {
+        this.router.navigate(['/admin'])
+      }
+    } else {
+      this.roleSource.next(false)
+    }
+  }
+
+  public updateRole(isAdmin: boolean): void {
+    localStorage.setItem('isAdmin', isAdmin.toString())
+    this.roleSource.next(isAdmin)
+    isAdmin ? this.router.navigate(['/admin']) : this.router.navigate(['/'])
+  }
+
+  public addVisit() {
+    this.totalVisits++
+    localStorage.setItem('totalVisits', this.totalVisits.toString())
+    this.totalVisitsSource.next(this.totalVisits)
   }
 
   public getVisits(): number {
@@ -26,11 +63,6 @@ export class ServerService {
     return this.forms
   }
 
-  public addVisit(): void {
-    this.totalVisits++
-    localStorage.setItem('totalVisits', this.totalVisits.toString())
-  }
-
   private fetchVisits(): void {
     const totalVisits = localStorage.getItem('totalVisits')
     if (totalVisits) {
@@ -38,6 +70,7 @@ export class ServerService {
     } else {
       this.totalVisits = 0
     }
+    this.totalVisitsSource.next(this.totalVisits)
   }
 
   private fetchForms(): void {
@@ -47,5 +80,6 @@ export class ServerService {
     } else {
       this.forms = []
     }
+    this.formsSource.next(this.forms)
   }
 }

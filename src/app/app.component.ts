@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core'
+import { ServerService } from './shared/server/server.service'
 
 @Component({
   selector: 'app-root',
@@ -8,17 +9,9 @@ import { Component, OnInit } from '@angular/core'
 export class AppComponent implements OnInit {
   title = 'ai-car-dealer'
 
-  ngOnInit(): void {
-    // this.updateVisits()
-  }
+  constructor(private server: ServerService) {}
 
-  private updateVisits(): void {
-    let totalVisits = localStorage.getItem('totalVisits')
-    if (totalVisits) {
-      totalVisits = (parseInt(totalVisits) + 1).toString()
-    } else {
-      totalVisits = '1'
-    }
-    localStorage.setItem('totalVisits', totalVisits)
+  ngOnInit(): void {
+    this.server.addVisit()
   }
 }

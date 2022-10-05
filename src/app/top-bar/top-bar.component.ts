@@ -1,20 +1,34 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, OnDestroy } from '@angular/core'
 import { MatDialog } from '@angular/material/dialog'
 import { Router } from '@angular/router'
 import { AboutUsDialogComponent } from '../about-us-dialog/about-us-dialog.component'
 import { LoginComponent } from '../login/login.component'
+import { ServerService } from '../shared/server/server.service'
 
 @Component({
   selector: 'top-bar',
   templateUrl: './top-bar.component.html',
   styleUrls: ['./top-bar.component.scss'],
 })
-export class TopBarComponent implements OnInit {
+export class TopBarComponent implements OnInit, OnDestroy {
   public isAdmin = false
+  private adminSubs: any = null
 
-  constructor(private dialog: MatDialog, private router: Router) {}
+  constructor(
+    private dialog: MatDialog,
+    private router: Router,
+    private server: ServerService,
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.adminSubs = this.server.isAdmin$.subscribe((isAdmin) => {
+      this.isAdmin = isAdmin
+    })
+  }
+
+  ngOnDestroy(): void {
+    this.adminSubs.unsubscribe()
+  }
 
   public aboutUsClicked(): void {
     this.dialog.open(AboutUsDialogComponent, {
@@ -28,16 +42,11 @@ export class TopBarComponent implements OnInit {
 
   private openAdminSite(): void {
     this.isAdmin = true
-    this.router.navigate(['/admin'])
-    localStorage.setItem('isAdmin', 'true')
-    // const dialogRef =this.dialog.open(LoginComponent, {
-    //   maxWidth: '400px',
-    // })
+    this.server.updateRole(true)
   }
 
   private logout(): void {
     this.isAdmin = false
-    localStorage.removeItem('isAdmin')
-    this.router.navigate(['/'])
+    this.server.updateRole(false)
   }
 }

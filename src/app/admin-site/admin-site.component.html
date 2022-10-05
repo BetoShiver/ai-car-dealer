@@ -10,4 +10,8 @@
       Insights
     </div>
   </mat-card>
+
+  <ng-container *ngIf="view == 'table'">
+    <app-table></app-table>
+  </ng-container>
 </div>
