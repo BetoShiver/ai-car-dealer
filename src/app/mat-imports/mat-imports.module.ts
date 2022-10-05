@@ -13,6 +13,7 @@ import { MatSelectModule } from '@angular/material/select'
 import { MatRadioModule } from '@angular/material/radio'
 import { MatDatepickerModule } from '@angular/material/datepicker'
 import { MatNativeDateModule, MatRippleModule } from '@angular/material/core'
+import { MatTableModule } from '@angular/material/table'
 
 const modules = [
   CommonModule,
@@ -32,6 +33,7 @@ const modules = [
   MatDatepickerModule,
   MatNativeDateModule,
   MatRippleModule,
+  MatTableModule,
 ]
 
 @NgModule({

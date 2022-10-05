@@ -54,9 +54,12 @@ export class ServerService {
     return this.totalVisits
   }
 
-  public saveForm(form: IForm): void {
+  public saveForm(form: any): void {
+    console.log('this.forms: ', this.forms)
+    console.log('form: ', form)
     this.forms.push(form)
     localStorage.setItem('forms', JSON.stringify(this.forms))
+    this.formsSource.next(this.forms)
   }
 
   public getForms(): IForm[] {

@@ -1,8 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core'
 import { MatDialog } from '@angular/material/dialog'
-import { Router } from '@angular/router'
 import { AboutUsDialogComponent } from '../about-us-dialog/about-us-dialog.component'
-import { LoginComponent } from '../login/login.component'
 import { ServerService } from '../shared/server/server.service'
 
 @Component({
@@ -14,11 +12,7 @@ export class TopBarComponent implements OnInit, OnDestroy {
   public isAdmin = false
   private adminSubs: any = null
 
-  constructor(
-    private dialog: MatDialog,
-    private router: Router,
-    private server: ServerService,
-  ) {}
+  constructor(private dialog: MatDialog, private server: ServerService) {}
 
   ngOnInit(): void {
     this.adminSubs = this.server.isAdmin$.subscribe((isAdmin) => {

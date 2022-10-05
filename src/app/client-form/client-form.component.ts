@@ -63,7 +63,7 @@ export class ClientFormComponent implements OnInit {
     let inputs: IUserInput = this.profileForm.value
     const formToSubmit = new FormToSubmit(inputs)
     this.formCompleted = true
-    console.log('formToSubmit: ', formToSubmit)
+    this.server.saveForm(formToSubmit)
     setTimeout(() => {
       window.alert(
         'Yor details were received successfully.you will receive an email with your Perfect Car Match Shortly.',

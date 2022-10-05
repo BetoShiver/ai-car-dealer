@@ -11,7 +11,9 @@ export interface IForm {
   gender: string
   birthday: string
   hobbies: string[]
+  hobbiesString?: string
   location: ILocation
+  locationString?: string
   color: string
   seats: number
   motorType: string
@@ -47,6 +49,8 @@ export class FormToSubmit {
   public color
   public seats
   public motorType
+  public hobbiesString
+  public locationString
 
   constructor(data: IUserInput) {
     this.fullName = this.sanitize(data.fullName)
@@ -56,6 +60,7 @@ export class FormToSubmit {
     this.hobbies = data.hobbies.map((hobby) => {
       this.sanitize(hobby)
     })
+    this.hobbiesString = this.hobbies.join(', ')
     this.location = {
       address: this.sanitize(data.address),
       city: this.sanitize(data.city),
@@ -64,6 +69,7 @@ export class FormToSubmit {
     this.color = this.sanitize(data.color)
     this.seats = data.seats
     this.motorType = this.sanitize(data.motorType)
+    this.locationString = `${this.location.address}, ${this.location.city}, ${this.location.country}`
   }
 
   private sanitize(string: string) {
