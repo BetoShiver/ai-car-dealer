@@ -1,6 +1,5 @@
 export interface IDatabase {
   totalVisits: number
-  adminVisits: number
   formsSubmitted: IForm[]
   isAdmin: boolean
 }
@@ -57,9 +56,7 @@ export class FormToSubmit {
     this.email = this.sanitize(data.email)
     this.gender = this.sanitize(data.gender)
     this.birthday = this.sanitize(data.birthday.toISOString())
-    this.hobbies = data.hobbies.map((hobby) => {
-      this.sanitize(hobby)
-    })
+    this.hobbies = data.hobbies
     this.hobbiesString = this.hobbies.join(', ')
     this.location = {
       address: this.sanitize(data.address),

@@ -20,6 +20,10 @@
           ? element.locationString
           : col == "color"
           ? ""
+          : col == "birthday"
+          ? (element[col] | date: "mediumDate")
+          : col == "hobbies"
+          ? (element.hobbiesString | titlecase)
           : element[col]
       }}
     </td>
