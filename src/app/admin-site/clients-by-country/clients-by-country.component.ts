@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, OnDestroy } from '@angular/core'
 import { Form } from 'src/app/shared/server/server.model'
 import { ServerService } from 'src/app/shared/server/server.service'
 
@@ -13,15 +13,16 @@ export interface Country {
   templateUrl: './clients-by-country.component.html',
   styleUrls: ['./clients-by-country.component.scss'],
 })
-export class ClientsByCountryComponent implements OnInit {
+export class ClientsByCountryComponent implements OnInit, OnDestroy {
   public forms: Form[] = []
   public countries: Country[] = []
   public totalNumberOfClients = 0
+  private subscription: any
 
   constructor(private server: ServerService) {}
 
   ngOnInit() {
-    this.server.forms$.subscribe((forms) => {
+    this.subscription = this.server.forms$.subscribe((forms) => {
       forms.forEach((form) => {
         this.totalNumberOfClients++
         let country = form.location.country
@@ -37,5 +38,9 @@ export class ClientsByCountryComponent implements OnInit {
           (country.numberOfClients / this.totalNumberOfClients) * 200
       })
     })
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe()
   }
 }

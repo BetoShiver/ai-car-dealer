@@ -1,0 +1,13 @@
+<mat-card>
+  <h2>What do our clients like to do?</h2>
+
+  <div class="table-row" *ngFor="let hobby of hobbies">
+    <div class="name-side">
+      {{ hobby.name }}
+    </div>
+    <div class="rating-side">
+      <div class="rate" [ngStyle]="{ width: hobby.width + 'px' }"></div>
+      <div class="number">{{ hobby.numberOfClients }}</div>
+    </div>
+  </div>
+</mat-card>

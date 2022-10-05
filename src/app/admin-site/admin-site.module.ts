@@ -6,12 +6,14 @@ import { MatImportsModule } from '../mat-imports/mat-imports.module'
 import { NgCircleProgressModule } from 'ng-circle-progress'
 import { FormsCompletedComponent } from './forms-completed/forms-completed.component'
 import { ClientsByCountryComponent } from './clients-by-country/clients-by-country.component'
+import { CommonHobbiesComponent } from './common-hobbies/common-hobbies.component'
 
 const components = [
   AdminSiteComponent,
   TableComponent,
   FormsCompletedComponent,
   ClientsByCountryComponent,
+  CommonHobbiesComponent,
 ]
 
 @NgModule({
