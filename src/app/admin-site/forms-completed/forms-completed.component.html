@@ -1,0 +1,15 @@
+<mat-card>
+  <h2>Forms Completion Rate</h2>
+
+  <div class="content">
+    <div class="data">
+      <div>Total Visits: {{ totalVisits$ | async }}</div>
+      <div>Forms Completed: {{ (forms$ | async)?.length }}</div>
+    </div>
+
+    <circle-progress
+      [percent]="percentage"
+      subtitle="successful visits"
+    ></circle-progress>
+  </div>
+</mat-card>

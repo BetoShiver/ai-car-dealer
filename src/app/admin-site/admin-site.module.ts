@@ -3,11 +3,32 @@ import { CommonModule } from '@angular/common'
 import { AdminSiteComponent } from './admin-site.component'
 import { TableComponent } from './table/table.component'
 import { MatImportsModule } from '../mat-imports/mat-imports.module'
+import { NgCircleProgressModule } from 'ng-circle-progress'
+import { FormsCompletedComponent } from './forms-completed/forms-completed.component'
 
-const components = [AdminSiteComponent, TableComponent]
+const components = [AdminSiteComponent, TableComponent, FormsCompletedComponent]
 
 @NgModule({
-  imports: [CommonModule, MatImportsModule],
+  imports: [
+    CommonModule,
+    MatImportsModule,
+    NgCircleProgressModule.forRoot({
+      radius: 70,
+      space: -25,
+      outerStrokeWidth: 25,
+      innerStrokeWidth: 25,
+      outerStrokeGradient: false,
+      outerStrokeColor: '#78C000',
+      innerStrokeColor: '#C7E596',
+      animationDuration: 1000,
+      showUnits: true,
+      showTitle: true,
+      showSubtitle: true,
+      showBackground: false,
+      startFromZero: false,
+      lazy: true,
+    }),
+  ],
   declarations: [...components],
   exports: [...components],
 })
