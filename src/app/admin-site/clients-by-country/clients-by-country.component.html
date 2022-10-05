@@ -1,0 +1,19 @@
+<mat-card>
+  <h2>Where are our clients from?</h2>
+
+  <div class="chart">
+    <div class="country" *ngFor="let country of countries">
+      <div class="name">{{ country.name }}</div>
+      <div class="bar-container">
+        <div
+          class="bar"
+          [ngStyle]="{
+            height:
+              (country.numberOfClients * 200) / totalNumberOfClients + 'px'
+          }"
+        ></div>
+      </div>
+      <div class="percent">{{ country.numberOfClients }}</div>
+    </div>
+  </div>
+</mat-card>

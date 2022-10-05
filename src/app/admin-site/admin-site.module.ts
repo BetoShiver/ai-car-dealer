@@ -5,8 +5,14 @@ import { TableComponent } from './table/table.component'
 import { MatImportsModule } from '../mat-imports/mat-imports.module'
 import { NgCircleProgressModule } from 'ng-circle-progress'
 import { FormsCompletedComponent } from './forms-completed/forms-completed.component'
+import { ClientsByCountryComponent } from './clients-by-country/clients-by-country.component'
 
-const components = [AdminSiteComponent, TableComponent, FormsCompletedComponent]
+const components = [
+  AdminSiteComponent,
+  TableComponent,
+  FormsCompletedComponent,
+  ClientsByCountryComponent,
+]
 
 @NgModule({
   imports: [
@@ -18,8 +24,8 @@ const components = [AdminSiteComponent, TableComponent, FormsCompletedComponent]
       outerStrokeWidth: 25,
       innerStrokeWidth: 25,
       outerStrokeGradient: false,
-      outerStrokeColor: '#78C000',
-      innerStrokeColor: '#C7E596',
+      outerStrokeColor: '#42BAFC',
+      innerStrokeColor: '#C7EBFF',
       animationDuration: 1000,
       showUnits: true,
       showTitle: true,
